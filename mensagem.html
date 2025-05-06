@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mensagens para Você</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #e91e63;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .hearts {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hearts">❤️❤️❤️</div>
+    <h1>Para você, <span id="nomeDestinatario"></span></h1>
+    <div id="mensagens"></div>
+  </div>
+
+  <script>
+    const nome = localStorage.getItem("nomePessoa") || "linda";
+
+    document.getElementById("nomeDestinatario").innerText = nome;
+
+    const mensagens = [
+      `${nome}, você é capaz de realizar tudo o que seu coração deseja.`,
+      `Cada desafio é uma oportunidade disfarçada. Você tem a força para superar qualquer obstáculo!`,
+      `Não importa o que aconteça, lembre-se: você é única e preciosa do seu jeito!`,
+      `Seja a melhor versão de você mesma, pois o mundo precisa da sua luz!`,
+      `Você tem o poder de transformar sonhos em realidade. Acredite em você e vá além!`,
+      `A beleza vem de dentro, e você é linda por ser quem você é!`,
+      `Seu sorriso ilumina o mundo e sua presença faz a diferença. Continue sendo você!`,
+      `Acredite no seu potencial, porque o universo já acredita em você!`,
+      `A sua jornada é única e cheia de momentos incríveis. Siga em frente com confiança!`,
+      `Você é perfeita assim como é, ${nome}. Nunca duvide disso!`
+    ];
+
+    document.getElementById("mensagens").innerHTML = mensagens
+      .map(m => `<p><span class="highlight">${m}</span></p>`)
+      .join("");
+  </script>
+</body>
+</html>
