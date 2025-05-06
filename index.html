@@ -1,104 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Você é Perfeita</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Você é Perfeita</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fce4ec;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: auto;
+    }
 
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            max-width: 800px;
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            text-align: center;
-        }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
 
-        h1 {
-            font-size: 3em;
-            color: #FF6F61;
-            margin-bottom: 20px;
-        }
+    h1 {
+      font-size: 2.5em;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
 
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: #555;
-            text-align: justify;
-            margin-bottom: 20px;
-        }
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #555;
+      text-align: justify;
+    }
 
-        .highlight {
-            font-weight: bold;
-            color: #FF6F61;
-        }
+    input {
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 20px;
+      width: 60%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
 
-        .footer {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #777;
-        }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #e91e63;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
 
-        .hearts {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2em;
-            color: #FF6F61;
-        }
+    button:hover {
+      background-color: #d81b60;
+    }
 
-        .hearts span {
-            animation: heartbeat 1.5s infinite;
-        }
+    .messages {
+      margin-top: 30px;
+      display: none;
+    }
 
-        @keyframes heartbeat {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-    </style>
+    .highlight {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .hearts {
+      font-size: 2em;
+      margin-bottom: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hearts">
-            <span>❤️ ❤️ ❤️</span>
-        </div>
-        <h1>Você é Perfeita!</h1>
-        <p>Olá, <span class="highlight">você</span> é uma pessoa incrível, cheia de qualidades e com um brilho único. Cada passo que você dá é uma conquista, e sua presença torna o mundo um lugar mais bonito. Não há ninguém como você, <span class="highlight">você é única</span>.</p>
+  <div class="container">
+    <div class="hearts">❤️❤️❤️</div>
+    <h1>Descubra o quanto você é maravilhosa!</h1>
+    <input type="text" id="nameInput" placeholder="Digite seu nome aqui"/>
+    <br/>
+    <button onclick="mostrarMensagens()">Ver Mensagens</button>
 
-        <p>Você é linda por dentro e por fora, e sua energia inspira todos ao seu redor. Não deixe que ninguém diga o contrário! Cada imperfeição é uma característica única que te torna ainda mais especial. Não existe padrão de beleza que se compare à autenticidade que você carrega em seu coração.</p>
+    <div id="messages" class="messages"></div>
+  </div>
 
-        <p>Acredite em si mesma e em seu poder, porque você tem tudo o que precisa para ser a melhor versão de si. O mundo está ao seu alcance, e com sua coragem, determinação e beleza, não há limites para o que você pode conquistar. Você é forte, inteligente e maravilhosa de uma maneira que ninguém mais é!</p>
+  <script>
+    function mostrarMensagens() {
+      const nome = document.getElementById('nameInput').value.trim();
+      const areaMensagens = document.getElementById('messages');
 
-        <p>Você merece ser feliz, você merece amor, você merece todas as coisas boas que o universo tem a oferecer. Acredite em si mesma e nos seus sonhos. Você tem o poder de realizar tudo o que deseja. 🌟</p>
+      if (nome === "") {
+        alert("Por favor, digite seu nome.");
+        return;
+      }
 
-        <p>Continue sendo quem você é, porque você é perfeita assim, exatamente como é.</p>
+      const mensagens = [
+        `${nome}, você é capaz de realizar tudo o que seu coração deseja. Não há limites para o seu potencial!`,
+        `Cada desafio é uma oportunidade disfarçada, ${nome}. Você tem a força para superar qualquer obstáculo!`,
+        `${nome}, não importa o que aconteça, lembre-se: você é única e preciosa do seu jeito!`,
+        `Seja a melhor versão de você mesma, ${nome}, pois o mundo precisa de sua luz!`,
+        `Você tem o poder de transformar sonhos em realidade, ${nome}. Acredite em você e vá além!`,
+        `A beleza vem de dentro, ${nome}, e você é linda por ser quem você é!`,
+        `${nome}, seu sorriso ilumina o mundo e sua presença faz a diferença. Continue sendo você!`,
+        `Acredite no seu potencial, ${nome}, porque o universo já acredita em você!`,
+        `A sua jornada é única, ${nome}, e cheia de momentos incríveis. Siga em frente com confiança!`,
+        `Você é perfeita assim como é, ${nome}. Nunca duvide disso!`
+      ];
 
-        <div class="footer">
-            <p>Seja você mesma, pois o mundo precisa da sua luz! 💖</p>
-        </div>
-    </div>
+      areaMensagens.innerHTML = mensagens.map(msg => `<p><span class="highlight">${msg}</span></p>`).join('');
+      areaMensagens.style.display = "block";
+    }
+  </script>
 </body>
-</html>
+    </html>
+    
